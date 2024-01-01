@@ -7,6 +7,7 @@ import { NoMatch } from 'pages/NoMatch';
 export const router = createBrowserRouter([
   {
     id: 'root',
+    path: '/wishes',
     Component: App,
     children: [
       { index: true, Component: Home },
