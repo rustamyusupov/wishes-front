@@ -1,8 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
 
-import { App } from './App';
-
+import { router } from './router';
 import './i18n';
 import './styles.css';
 
@@ -12,7 +12,7 @@ const app = () => {
 
   root.render(
     <StrictMode>
-      <App />
+      <RouterProvider router={router} />
     </StrictMode>
   );
 };
