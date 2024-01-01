@@ -1,3 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 export const App = () => {
-  return <main>Wishes</main>;
+  const { t } = useTranslation();
+
+  return <main>{t('title')}</main>;
 };
