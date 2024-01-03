@@ -3,3 +3,45 @@
   flex-direction: column;
   width: 100%;
 }
+
+.title {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.category {
+  margin-bottom: 20px;
+}
+
+.heading {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.list {
+  min-height: 10px;
+  padding: 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.item {
+  max-width: 70ch;
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+.name {
+  color: var(--color-blue);
+}
+
+.price {
+  color: var(--color-black);
+
+  &.falls {
+    color: var(--color-green);
+  }
+}
