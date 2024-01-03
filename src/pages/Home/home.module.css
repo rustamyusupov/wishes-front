@@ -4,8 +4,26 @@
   width: 100%;
 }
 
-.title {
+.header {
+  display: flex;
   margin-bottom: 20px;
+}
+
+.title {
+  margin-right: 10px;
+}
+
+.link {
+  width: 24px;
+  height: 24px;
+}
+
+.add {
+  fill: var(--color-gray);
+
+  &:hover {
+    fill: var(--color-gray-dark);
+  }
 }
 
 .category {
