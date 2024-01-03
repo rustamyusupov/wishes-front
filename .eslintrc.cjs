@@ -27,6 +27,7 @@ module.exports = {
         groups: ['builtin', 'external', 'internal', 'parent', ['index', 'sibling']],
       },
     ],
+    'react/prop-types': 0,
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
   },
   settings: {
