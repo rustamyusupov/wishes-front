@@ -1,0 +1,19 @@
+.category {
+  max-width: 70ch;
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+.name {
+  color: var(--color-blue);
+}
+
+.price {
+  color: var(--color-black);
+
+  &.falls {
+    color: var(--color-green);
+  }
+}
