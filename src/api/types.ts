@@ -6,7 +6,7 @@ export interface Wish {
   id: number;
   link: string;
   name: string;
-  price: number[];
+  prices: number[];
   sort: number;
 }
 
