@@ -1,16 +1,20 @@
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router-dom';
+import { useRouteLoaderData } from 'react-router-dom';
 
-import { Category as ICategory } from 'api';
+import { Data } from 'api';
 import { Link } from 'components/Link';
 import Add from 'icons/add.svg?react';
 
 import { Wish } from './Wish';
+import { getCategories } from './helpers';
 import css from './home.module.css';
 
 export const Home = () => {
-  const categories = useLoaderData() as ICategory[];
+  const data = useRouteLoaderData('root') as Data;
   const { t } = useTranslation(['home']);
+
+  const categories = useCallback(() => getCategories(data), [data])();
 
   return (
     <div className={css.home}>

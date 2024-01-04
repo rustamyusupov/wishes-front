@@ -4,3 +4,4 @@ export * from './prices';
 export * from './request';
 export * from './types';
 export * from './wishes';
+export * from './loader';

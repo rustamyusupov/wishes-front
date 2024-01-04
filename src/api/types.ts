@@ -24,3 +24,10 @@ export interface Price {
   value: number;
   date: string;
 }
+
+export interface Data {
+  categories: Category[];
+  currencies: Currency[];
+  wishes: Wish[];
+  prices: Price[];
+}
