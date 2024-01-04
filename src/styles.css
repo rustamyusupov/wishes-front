@@ -18,15 +18,14 @@
   color: var(--color-black);
 }
 
-body {
+* {
   margin: 0;
 }
 
-h1,
-h2,
-p,
-ul {
-  margin: 0;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 h1 {
@@ -38,6 +37,23 @@ h2 {
 }
 
 p,
-a {
+a,
+input,
+button,
+select {
   font-size: 0.8em;
+}
+
+a {
+  outline: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
 }
