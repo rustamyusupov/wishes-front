@@ -15,12 +15,13 @@ export const Select: FC<Props> = ({
 }): ReactElement => (
   <select
     className={cn(css.select, className)}
+    defaultValue=""
     id={id}
     name={name}
     required={required}
     value={value}
   >
-    <option value="" disabled hidden selected>
+    <option value="" disabled hidden>
       {placeholder}
     </option>
     {options.map(({ label, value }) => (
