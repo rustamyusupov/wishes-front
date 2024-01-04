@@ -5,8 +5,8 @@ import { Link as Route } from 'react-router-dom';
 import css from './link.module.css';
 import { Props } from './types';
 
-export const Link: FC<Props> = ({ className, children, to }): ReactElement => (
-  <Route className={cn(css.link, className)} to={to}>
+export const Link: FC<Props> = ({ className, children, title, to }): ReactElement => (
+  <Route className={cn(css.link, className)} to={to} title={title}>
     {children}
   </Route>
 );
