@@ -10,7 +10,7 @@ export default defineConfig({
     host: 'localhost',
     port: 3000,
     proxy: {
-      '/api': 'https://rstm.me',
+      '/api': 'http://localhost:9000',
     },
   },
 });
