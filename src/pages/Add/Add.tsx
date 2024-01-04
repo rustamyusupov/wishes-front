@@ -43,10 +43,13 @@ export const Add = () => {
         date: new Date().toLocaleDateString('ru-RU'),
       }),
     });
+
+    // TODO: redirect to home
   };
 
   return (
     <form className={css.add} onSubmit={handleSubmit}>
+      <h1 className={css.title}>{t('title')}</h1>
       <Field
         className={cn(css.field, css.name)}
         id="name"
@@ -73,6 +76,14 @@ export const Add = () => {
         step="any"
         type="number"
       />
+      <Field
+        className={cn(css.field, css.sort)}
+        type="number"
+        name="sort"
+        id="sort"
+        min="0"
+        placeholder={t('sort')}
+      />
       <Select
         className={cn(css.field, css.currency)}
         name="currencyId"
@@ -89,20 +100,16 @@ export const Add = () => {
         placeholder={t('category')}
         required
       />
-      <Field
-        className={cn(css.field, css.sort)}
-        type="number"
-        name="sort"
-        id="sort"
-        min="0"
-        placeholder={t('sort')}
-      />
-      <label className={css.label}>
-        <Field className={cn(css.field, css.archive)} type="checkbox" name="archive" id="archive" />
-        {t('archive')}
-      </label>
+      <div className={css.checkbox}>
+        <Field className={cn(css.field, css.archive)} id="archive" type="checkbox" name="archive" />
+        <label className={css.label} htmlFor="archive">
+          {t('archive')}
+        </label>
+      </div>
       <div className={css.action}>
-        <Button type="submit">{t('submit')}</Button>
+        <Button className={css.submit} type="submit">
+          {t('submit')}
+        </Button>
       </div>
     </form>
   );
