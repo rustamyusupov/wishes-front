@@ -18,7 +18,7 @@
   height: 24px;
 }
 
-.add {
+.plus {
   fill: var(--color-gray);
 
   &:hover {

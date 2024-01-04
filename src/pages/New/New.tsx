@@ -7,12 +7,12 @@ import { Button } from 'components/Button';
 import { Field } from 'components/Field';
 import { Select } from 'components/Select';
 
-import css from './add.module.css';
 import { getOptions } from './helpers';
+import css from './new.module.css';
 
-export const Add = () => {
+export const New = () => {
   const data = useRouteLoaderData('root') as Data;
-  const { t } = useTranslation('add');
+  const { t } = useTranslation('new');
 
   const categories = getOptions(data.categories);
   const currencies = getOptions(data.currencies);
@@ -48,7 +48,7 @@ export const Add = () => {
   };
 
   return (
-    <form className={css.add} onSubmit={handleSubmit}>
+    <form className={css.new} onSubmit={handleSubmit}>
       <h1 className={css.title}>{t('title')}</h1>
       <Field
         className={cn(css.field, css.name)}
