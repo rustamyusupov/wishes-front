@@ -1,12 +1,12 @@
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Wish as IWish } from 'api';
 import { Link } from 'components/Link';
 
+import { WishWithPrice } from './types';
 import css from './wish.module.css';
 
-export const Wish: FC<IWish> = ({ id, link, name, prices, currency }): ReactElement => {
+export const Wish: FC<WishWithPrice> = ({ id, link, name, prices, currency }): ReactElement => {
   const { t } = useTranslation(['common']);
 
   return (
