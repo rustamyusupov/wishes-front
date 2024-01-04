@@ -5,7 +5,8 @@
   --color-blue-light: #8cbbe9;
   --color-blue: #1976d2;
   --color-gray: #c4c4c4;
-  --color-gray-dark: #5f6368;
+  --color-gray-dark: #757575;
+  --color-gray-darker: #5f6368;
   --color-green: green;
   --color-red-lighter: #fdf7f7;
   --color-red-light: #e99797;
@@ -36,24 +37,12 @@ h2 {
   font-size: 0.9em;
 }
 
-p,
-a,
-input,
-button,
-select {
+p {
   font-size: 0.8em;
-}
-
-a {
-  outline: none;
 }
 
 img,
 svg {
   display: block;
   max-width: 100%;
-}
-
-button {
-  cursor: pointer;
 }
