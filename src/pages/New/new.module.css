@@ -18,6 +18,7 @@
 
   &.link {
     flex: 1;
+    min-width: 125px;
   }
 
   &.price {
