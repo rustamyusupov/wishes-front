@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useRouteLoaderData } from 'react-router-dom';
+import { useNavigate, useRouteLoaderData } from 'react-router-dom';
 
 import { Data, Wish, fetchJSON } from 'api';
 import { Button } from 'components/Button';
@@ -12,6 +12,7 @@ import css from './new.module.css';
 
 export const New = () => {
   const data = useRouteLoaderData('root') as Data;
+  const navigate = useNavigate();
   const { t } = useTranslation('new');
 
   const categories = getOptions(data.categories);
@@ -44,9 +45,10 @@ export const New = () => {
       }),
     });
 
-    // TODO: redirect to home
+    navigate('/wishes');
   };
 
+  // TODO: use Form from reactrouter
   return (
     <form className={css.new} onSubmit={handleSubmit}>
       <h1 className={css.title}>{t('title')}</h1>
