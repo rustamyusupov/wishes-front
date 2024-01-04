@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router-dom';
 
-import { Data } from 'api';
+import { Data, Wish, fetchJSON } from 'api';
 import { Button } from 'components/Button';
 import { Field } from 'components/Field';
 import { Select } from 'components/Select';
@@ -17,14 +17,43 @@ export const Add = () => {
   const categories = getOptions(data.categories);
   const currencies = getOptions(data.currencies);
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetchJSON<Wish>('/api/wishes', {
+      method: 'POST',
+      body: JSON.stringify({
+        ...data,
+        archive: Boolean(data.archive) ?? false,
+        categoryId: Number(data.categoryId),
+        currencyId: Number(data.currencyId),
+        sort: Number(data.sort) ?? 0,
+      }),
+    });
+
+    await fetchJSON('/api/prices', {
+      method: 'POST',
+      body: JSON.stringify({
+        wishId: response.id,
+        value: Number(data.price),
+        date: new Date().toLocaleDateString('ru-RU'),
+      }),
+    });
+  };
+
   return (
-    <form className={css.add}>
+    <form className={css.add} onSubmit={handleSubmit}>
       <Field
         className={cn(css.field, css.name)}
         id="name"
         name="name"
         placeholder={t('name')}
         type="text"
+        required
       />
       <Field
         className={cn(css.field, css.link)}
