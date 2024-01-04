@@ -15,20 +15,18 @@ export const Field: FC<Props> = ({
   step,
   type = 'text',
   value,
-}): ReactElement => {
-  return (
-    <input
-      // eslint-disable-next-line jsx-a11y/no-autofocus
-      autoFocus={autofocus}
-      className={cn(css.field, className)}
-      id={id}
-      min={min}
-      name={name}
-      placeholder={placeholder}
-      required={required}
-      step={step}
-      type={type}
-      value={value}
-    />
-  );
-};
+}): ReactElement => (
+  <input
+    // eslint-disable-next-line jsx-a11y/no-autofocus
+    autoFocus={autofocus}
+    className={cn(css.field, className)}
+    id={id}
+    min={min}
+    name={name}
+    placeholder={placeholder}
+    required={required}
+    step={step}
+    type={type}
+    value={value}
+  />
+);
