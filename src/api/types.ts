@@ -24,7 +24,3 @@ export interface Price {
   value: number;
   date: string;
 }
-
-export interface CategoryWithWishes extends Category {
-  wishes: Wish[];
-}
