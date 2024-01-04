@@ -8,9 +8,11 @@ export const Field: FC<Props> = ({
   autofocus,
   className,
   id,
+  min,
   name,
   placeholder,
   required,
+  step,
   type = 'text',
   value,
 }): ReactElement => {
@@ -20,9 +22,11 @@ export const Field: FC<Props> = ({
       autoFocus={autofocus}
       className={cn(css.field, className)}
       id={id}
+      min={min}
       name={name}
       placeholder={placeholder}
       required={required}
+      step={step}
       type={type}
       value={value}
     />
