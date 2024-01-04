@@ -22,7 +22,7 @@
   fill: var(--color-gray);
 
   &:hover {
-    fill: var(--color-gray-dark);
+    fill: var(--color-gray-darker);
   }
 }
 
