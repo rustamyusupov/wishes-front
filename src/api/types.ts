@@ -1,17 +1,30 @@
+export interface Category {
+  id: number;
+  name: string;
+}
+
+export interface Currency {
+  id: number;
+  name: string;
+}
+
 export interface Wish {
   archive: boolean;
-  categoryId: number;
-  currency: string;
-  currencyId: number;
+  categoryId: Category['id'];
+  currencyId: Currency['id'];
   id: number;
   link: string;
   name: string;
-  prices: number[];
   sort: number;
 }
 
-export interface Category {
-  id: string;
-  name: string;
+export interface Price {
+  id: number;
+  wishId: Wish['id'];
+  value: number;
+  date: string;
+}
+
+export interface CategoryWithWishes extends Category {
   wishes: Wish[];
 }

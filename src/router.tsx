@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { getCategories } from 'api';
+import { getList } from 'api';
 import { App } from 'components/App';
 import { Add } from 'pages/Add';
 import { Home } from 'pages/Home';
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
     path: '/wishes',
     Component: App,
     children: [
-      { index: true, loader: getCategories, Component: Home },
+      { index: true, loader: getList, Component: Home },
       { path: 'add', Component: Add },
       { path: '*', Component: NoMatch },
     ],
