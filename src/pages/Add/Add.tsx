@@ -1,14 +1,21 @@
 import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useRouteLoaderData } from 'react-router-dom';
 
+import { Data } from 'api';
 import { Button } from 'components/Button';
 import { Field } from 'components/Field';
 import { Select } from 'components/Select';
 
 import css from './add.module.css';
+import { getOptions } from './helpers';
 
 export const Add = () => {
+  const data = useRouteLoaderData('root') as Data;
   const { t } = useTranslation('add');
+
+  const categories = getOptions(data.categories);
+  const currencies = getOptions(data.currencies);
 
   return (
     <form className={css.add}>
@@ -41,11 +48,7 @@ export const Add = () => {
         className={cn(css.field, css.currency)}
         name="currencyId"
         id="currency"
-        options={[
-          { label: 'USD', value: 0 },
-          { label: 'EUR', value: 1 },
-          { label: 'RUB', value: 2 },
-        ]}
+        options={currencies}
         placeholder={t('currency')}
         required
       />
@@ -53,11 +56,7 @@ export const Add = () => {
         className={cn(css.field, css.category)}
         name="categoryId"
         id="category"
-        options={[
-          { label: 'Devices', value: 0 },
-          { label: 'Equipment', value: 1 },
-          { label: 'Clothes', value: 2 },
-        ]}
+        options={categories}
         placeholder={t('category')}
         required
       />
