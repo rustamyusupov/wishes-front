@@ -1,18 +1,17 @@
 .button {
-  display: flex;
-  align-items: center;
   min-width: 64px;
   min-height: 46px;
-  padding: 6px 8px;
+  padding: 5px 15px;
+  font-size: 0.8em;
   color: var(--color-blue);
+  text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  background-color: transparent;
+  background-color: var(--color-white);
   border: none;
   border-radius: 4px;
 
   &.default {
-    padding: 5px 15px;
     border: 1px solid var(--color-blue-light);
   }
 
