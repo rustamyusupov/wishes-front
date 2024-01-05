@@ -1,8 +1,26 @@
-.category {
+.wish {
+  position: relative;
   max-width: 70ch;
 
   &:not(:last-child) {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+.link {
+  position: absolute;
+  top: 14px;
+  left: -36px;
+  color: unset;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.edit {
+  fill: var(--color-gray);
+
+  &:hover {
+    fill: var(--color-gray-darker);
   }
 }
 
