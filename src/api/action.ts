@@ -7,28 +7,41 @@ export const action = async ({ request, params }: ActionFunctionArgs): Promise<R
   const form = await request.formData();
   const data = Object.fromEntries(form.entries());
 
-  if (request.method === 'POST' || request.method === 'PUT') {
-    const url = `/api/wishes/${request.method === 'PUT' ? params.id : ''}`;
+  switch (request.method) {
+    case 'POST':
+    case 'PUT': {
+      const url = `/api/wishes/${request.method === 'PUT' ? params.id : ''}`;
 
-    const response = await fetchJSON<Wish>(url, {
-      method: request.method,
-      body: JSON.stringify({
-        ...data,
-        archive: Boolean(data.archive) ?? false,
-        categoryId: Number(data.categoryId),
-        currencyId: Number(data.currencyId),
-        sort: Number(data.sort) ?? 0,
-      }),
-    });
+      const response = await fetchJSON<Wish>(url, {
+        method: request.method,
+        body: JSON.stringify({
+          ...data,
+          archive: Boolean(data.archive) ?? false,
+          categoryId: Number(data.categoryId),
+          currencyId: Number(data.currencyId),
+          sort: Number(data.sort) ?? 0,
+        }),
+      });
 
-    await fetchJSON('/api/prices', {
-      method: 'POST',
-      body: JSON.stringify({
-        wishId: response.id,
-        value: Number(data.price),
-        date: new Date().toLocaleDateString('ru-RU'),
-      }),
-    });
+      await fetchJSON('/api/prices', {
+        method: 'POST',
+        body: JSON.stringify({
+          wishId: response.id,
+          value: Number(data.price),
+          date: new Date().toLocaleDateString('ru-RU'),
+        }),
+      });
+
+      break;
+    }
+
+    case 'DELETE': {
+      await fetchJSON(`/api/wishes/${params.id}`, {
+        method: 'DELETE',
+      });
+
+      break;
+    }
   }
 
   return redirect('/wishes');
