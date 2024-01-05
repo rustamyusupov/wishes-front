@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { FC, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ import { Wish } from './Wish';
 import { getCategories } from './helpers';
 import css from './home.module.css';
 
-export const Home = () => {
+export const Home: FC = (): ReactElement => {
   const data = useRouteLoaderData('root') as Data;
   const { t } = useTranslation(['home']);
 
