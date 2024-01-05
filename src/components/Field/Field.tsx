@@ -7,6 +7,8 @@ import { Props } from './types';
 export const Field: FC<Props> = ({
   autofocus,
   className,
+  defaultChecked,
+  defaultValue,
   id,
   min,
   name,
@@ -20,6 +22,8 @@ export const Field: FC<Props> = ({
     // eslint-disable-next-line jsx-a11y/no-autofocus
     autoFocus={autofocus}
     className={cn(css.field, className)}
+    defaultChecked={defaultChecked}
+    defaultValue={defaultValue}
     id={id}
     min={min}
     name={name}

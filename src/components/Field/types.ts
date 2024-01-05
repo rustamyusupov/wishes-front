@@ -1,5 +1,7 @@
 export interface Props {
   className?: string;
+  defaultChecked?: boolean;
+  defaultValue?: string | number;
   id: string;
   min?: string;
   name: string;
