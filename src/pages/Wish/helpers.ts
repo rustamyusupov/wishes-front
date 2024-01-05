@@ -8,11 +8,16 @@ export const getOptions = (list: Item[]): Option[] =>
     value: option.id,
   }));
 
-export const getWish = ({ currencies, id, prices, wishes }: DataWithId): WishWithPrice => {
+export const getWish = ({
+  currencies,
+  id,
+  prices,
+  wishes,
+}: DataWithId): WishWithPrice | undefined => {
   const wish = wishes.find(wish => wish.id === id);
 
   if (!wish) {
-    throw new Error(`Wish with id ${id} not found`);
+    return undefined;
   }
 
   return {

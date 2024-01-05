@@ -1,23 +1,11 @@
-import { Data, Wish } from 'api';
-
-export interface Item {
-  id: number;
-  name: string;
-}
+import { Option } from 'components/Select';
+import { WishWithPrice } from 'pages/Wish';
 
 export interface Props {
-  id?: number;
-  isEdit?: boolean;
+  categories: Option[];
+  currencies: Option[];
   method: 'post' | 'put';
   submit: 'string';
   title: 'string';
-}
-
-export interface DataWithId extends Data {
-  id: number;
-}
-
-export interface WishWithPrice extends Wish {
-  currency: string | undefined;
-  price: number | undefined;
+  wish?: WishWithPrice;
 }

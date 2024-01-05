@@ -1,24 +1,24 @@
 import cn from 'classnames';
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form as RouterForm, useRouteLoaderData } from 'react-router-dom';
+import { Form as RouterForm } from 'react-router-dom';
 
-import { Data } from 'api';
 import { Button } from 'components/Button';
 import { Field } from 'components/Field';
 import { Select } from 'components/Select';
 
 import css from './form.module.css';
-import { getOptions, getWish } from './helpers';
 import { Props } from './types';
 
-export const Form: FC<Props> = ({ id, isEdit = false, method, submit, title }): ReactElement => {
-  const data = useRouteLoaderData('root') as Data;
+export const Form: FC<Props> = ({
+  categories,
+  currencies,
+  method,
+  submit,
+  title,
+  wish,
+}): ReactElement => {
   const { t } = useTranslation('form');
-
-  const categories = getOptions(data.categories);
-  const currencies = getOptions(data.currencies);
-  const wish = id ? getWish({ id, ...data }) : null;
 
   return (
     <RouterForm className={css.form} method={method}>
@@ -93,7 +93,7 @@ export const Form: FC<Props> = ({ id, isEdit = false, method, submit, title }): 
         </label>
       </div>
       <div className={css.action}>
-        {isEdit ? (
+        {wish ? (
           <Button theme="error" type="submit">
             {t('delete')}
           </Button>
