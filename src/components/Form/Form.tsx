@@ -9,21 +9,24 @@ import { Field } from 'components/Field';
 import { Select } from 'components/Select';
 
 import css from './form.module.css';
-import { getOptions } from './helpers';
+import { getOptions, getWish } from './helpers';
 import { Props } from './types';
 
-export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
+export const Form: FC<Props> = ({ id, isEdit = false, method, submit, title }): ReactElement => {
   const data = useRouteLoaderData('root') as Data;
   const { t } = useTranslation('form');
 
   const categories = getOptions(data.categories);
   const currencies = getOptions(data.currencies);
+  const wish = id ? getWish({ id, ...data }) : null;
 
   return (
     <RouterForm className={css.form} method={method}>
       <h1 className={css.title}>{title}</h1>
       <Field
+        autofocus
         className={cn(css.field, css.name)}
+        defaultValue={wish?.name}
         id="name"
         name="name"
         placeholder={t('name')}
@@ -32,6 +35,7 @@ export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
       />
       <Field
         className={cn(css.field, css.link)}
+        defaultValue={wish?.link}
         id="link"
         name="link"
         placeholder={t('link')}
@@ -40,6 +44,7 @@ export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
       />
       <Field
         className={cn(css.field, css.price)}
+        defaultValue={wish?.price}
         id="price"
         min="0"
         name="price"
@@ -50,6 +55,7 @@ export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
       />
       <Field
         className={cn(css.field, css.sort)}
+        defaultValue={wish?.sort}
         type="number"
         name="sort"
         id="sort"
@@ -58,6 +64,7 @@ export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
       />
       <Select
         className={cn(css.field, css.currency)}
+        defaultValue={wish?.currencyId}
         name="currencyId"
         id="currency"
         options={currencies}
@@ -66,6 +73,7 @@ export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
       />
       <Select
         className={cn(css.field, css.category)}
+        defaultValue={wish?.categoryId}
         name="categoryId"
         id="category"
         options={categories}
@@ -73,12 +81,23 @@ export const Form: FC<Props> = ({ method, submit, title }): ReactElement => {
         required
       />
       <div className={css.checkbox}>
-        <Field className={cn(css.field, css.archive)} id="archive" type="checkbox" name="archive" />
+        <Field
+          className={cn(css.field, css.archive)}
+          defaultChecked={wish?.archive}
+          id="archive"
+          type="checkbox"
+          name="archive"
+        />
         <label className={css.label} htmlFor="archive">
           {t('archive')}
         </label>
       </div>
       <div className={css.action}>
+        {isEdit ? (
+          <Button theme="error" type="submit">
+            {t('delete')}
+          </Button>
+        ) : null}
         <Button className={css.submit} type="submit">
           {submit}
         </Button>
