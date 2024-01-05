@@ -5,6 +5,7 @@ export interface Option {
 
 export interface Props {
   className?: string;
+  defaultValue?: string | number;
   id: string;
   name: string;
   options: Option[];

@@ -6,6 +6,7 @@ import { Props } from './types';
 
 export const Select: FC<Props> = ({
   className,
+  defaultValue = '',
   id,
   name,
   options,
@@ -15,7 +16,7 @@ export const Select: FC<Props> = ({
 }): ReactElement => (
   <select
     className={cn(css.select, className)}
-    defaultValue=""
+    defaultValue={defaultValue}
     id={id}
     name={name}
     required={required}
