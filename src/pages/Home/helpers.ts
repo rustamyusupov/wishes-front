@@ -9,11 +9,13 @@ export const getCategories = ({
   prices,
 }: Data): CategoryWithWishes[] => {
   const categoriesWithWishes = categories?.map(category => {
-    const filtered = wishes?.filter(wish => wish.categoryId === category.id);
+    const prepared = wishes
+      ?.filter(wish => wish.categoryId === category.id)
+      .sort((a, b) => a.sort - b.sort);
 
     return {
       ...category,
-      wishes: filtered?.map(wish => {
+      wishes: prepared?.map(wish => {
         return {
           ...wish,
           currency: currencies?.find(currency => currency.id === wish.currencyId)?.name,
