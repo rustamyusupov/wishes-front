@@ -1,4 +1,6 @@
 {
-  "submit": "Update",
-  "title": "Edit wish"
+  "add": "Add",
+  "edit": "Edit wish",
+  "new": "New wish",
+  "update": "Update"
 }

@@ -12,6 +12,7 @@ export const Wish: FC = (): ReactElement => {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation('wish');
 
+  const isEdit = Boolean(id);
   const categories = getOptions(data.categories);
   const currencies = getOptions(data.currencies);
   const wish = getWish({ id: Number(id), ...data });
@@ -20,9 +21,9 @@ export const Wish: FC = (): ReactElement => {
     <Form
       categories={categories}
       currencies={currencies}
-      method="put"
-      submit={t('submit')}
-      title={t('title')}
+      method={isEdit ? 'put' : 'post'}
+      submit={t(isEdit ? 'update' : 'add')}
+      title={t(isEdit ? 'edit' : 'new')}
       wish={wish}
     />
   );
