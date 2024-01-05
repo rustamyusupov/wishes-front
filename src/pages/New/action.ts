@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 
-import { fetchJSON } from './request';
-import { Wish } from './types';
+import { fetchJSON } from '../../api/request';
+import { Wish } from '../../api/types';
 
 export const action = async ({ request }: { request: Request }) => {
   const form = await request.formData();

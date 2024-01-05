@@ -2,7 +2,7 @@ import { LoaderFunction } from 'react-router-dom';
 
 import { fetchJSON, Category, Currency, Price, Wish } from 'api';
 
-import { Data } from './types';
+import { Data } from '../../api/types';
 
 export const loader: LoaderFunction = async (): Promise<Data> => {
   const [categories, currencies, prices, wishes] = await Promise.all([
