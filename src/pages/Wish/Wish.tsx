@@ -1,23 +1,14 @@
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useParams, useRouteLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { Data } from 'api';
-
-import css from './wish.module.css';
+import { Form } from 'components/Form';
 
 export const Wish: FC = (): ReactElement => {
-  const data = useRouteLoaderData('root') as Data;
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation('wish');
 
-  const wish = data.wishes.find(item => item.id === Number(id));
-
-  console.log(wish);
-
   return (
-    <Form className={css.wish} method="put">
-      <h1 className={css.title}>{t('title')}</h1>
-    </Form>
+    <Form id={Number(id)} isEdit={true} method="put" submit={t('submit')} title={t('title')} />
   );
 };
