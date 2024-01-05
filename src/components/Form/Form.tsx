@@ -93,11 +93,11 @@ export const Form: FC<Props> = ({
         </label>
       </div>
       <div className={css.action}>
-        {wish ? (
+        {/* {wish ? (
           <Button theme="error" type="submit">
             {t('delete')}
           </Button>
-        ) : null}
+        ) : null} */}
         <Button className={css.submit} type="submit">
           {submit}
         </Button>
