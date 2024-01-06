@@ -20,9 +20,9 @@ export const Wish: FC<WishWithPrice> = ({ id, link, name, prices, currency }): R
         {name}
       </Link>
       &nbsp;&mdash;&nbsp;
-      <Link className={css.price} to={``}>
-        {`${t('currency', { currency, val: prices.at(-1) ?? 0, locale: 'ru-RU' })}`}
-      </Link>
+      {/* <Link className={css.price} to={``}> */}
+      {`${t('currency', { currency, val: prices.at(-1) ?? 0, locale: 'ru-RU' })}`}
+      {/* </Link> */}
     </li>
   );
 };
