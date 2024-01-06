@@ -11,6 +11,7 @@ import css from './form.module.css';
 import { Props } from './types';
 
 export const Form: FC<Props> = ({
+  autofocus,
   categories,
   currencies,
   method,
@@ -24,7 +25,7 @@ export const Form: FC<Props> = ({
     <RouterForm className={css.form} method={method}>
       <h1 className={css.title}>{title}</h1>
       <Field
-        autofocus
+        autofocus={autofocus}
         className={cn(css.field, css.name)}
         defaultValue={wish?.name}
         id="name"

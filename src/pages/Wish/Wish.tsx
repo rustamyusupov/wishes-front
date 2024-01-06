@@ -19,6 +19,7 @@ export const Wish: FC = (): ReactElement => {
 
   return (
     <Form
+      autofocus={!isEdit}
       categories={categories}
       currencies={currencies}
       method={isEdit ? 'put' : 'post'}

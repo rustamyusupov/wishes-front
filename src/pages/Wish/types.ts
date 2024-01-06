@@ -16,6 +16,7 @@ export interface WishWithPrice extends Wish {
 }
 
 export interface Props {
+  autofocus?: boolean;
   categories: Option[];
   currencies: Option[];
   method: 'post' | 'put';
