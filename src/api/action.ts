@@ -16,7 +16,7 @@ export const action = async ({ request, params }: ActionFunctionArgs): Promise<R
         method: request.method,
         body: JSON.stringify({
           ...data,
-          archive: Boolean(data.archive) ?? false,
+          archive: Boolean(data.archive),
           categoryId: Number(data.categoryId),
           currencyId: Number(data.currencyId),
           sort: Number(data.sort) ?? 0,
