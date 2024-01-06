@@ -7,21 +7,26 @@ export const getCategories = ({
   wishes,
   currencies,
   prices,
+  isVisible,
 }: Data): CategoryWithWishes[] => {
-  const categoriesWithWishes = categories?.map(category => {
-    const prepared = wishes
-      ?.filter(wish => wish.categoryId === category.id)
-      .sort((a, b) => a.sort - b.sort);
+  const categoriesWithWishes = categories
+    ?.map(category => {
+      const prepared = wishes
+        ?.filter(
+          wish => wish.categoryId === category.id && (wish.archive === isVisible || !wish.archive)
+        )
+        .sort((a, b) => a.sort - b.sort);
 
-    return {
-      ...category,
-      wishes: prepared?.map(wish => ({
-        ...wish,
-        currency: currencies?.find(currency => currency.id === wish.currencyId)?.name,
-        prices: prices?.filter(price => price.wishId === wish.id).map(price => price.value),
-      })),
-    };
-  });
+      return {
+        ...category,
+        wishes: prepared?.map(wish => ({
+          ...wish,
+          currency: currencies?.find(currency => currency.id === wish.currencyId)?.name,
+          prices: prices?.filter(price => price.wishId === wish.id).map(price => price.value),
+        })),
+      };
+    })
+    ?.filter(category => category.wishes.length > 0);
 
   return categoriesWithWishes;
 };

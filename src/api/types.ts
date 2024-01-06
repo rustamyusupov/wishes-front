@@ -28,6 +28,7 @@ export interface Price {
 export interface Data {
   categories: Category[];
   currencies: Currency[];
+  isVisible: boolean;
   wishes: Wish[];
   prices: Price[];
 }
