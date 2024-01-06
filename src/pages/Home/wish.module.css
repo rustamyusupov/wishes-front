@@ -35,3 +35,8 @@
     color: var(--color-green);
   }
 }
+
+.wish.archive > .name,
+.wish.archive > .price {
+  color: var(--color-black);
+}
