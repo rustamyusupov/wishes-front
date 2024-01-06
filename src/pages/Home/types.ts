@@ -1,4 +1,8 @@
-import { Category, Wish } from 'api';
+import { Category, Data, Wish } from 'api';
+
+export interface LoadedData extends Data {
+  isVisible: boolean;
+}
 
 export interface WishWithPrice extends Wish {
   currency: string | undefined;

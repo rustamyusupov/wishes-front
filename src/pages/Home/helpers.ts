@@ -1,6 +1,4 @@
-import { Data } from 'api';
-
-import { CategoryWithWishes } from './types';
+import { CategoryWithWishes, LoadedData } from './types';
 
 export const getCategories = ({
   categories,
@@ -8,7 +6,7 @@ export const getCategories = ({
   currencies,
   prices,
   isVisible,
-}: Data): CategoryWithWishes[] => {
+}: LoadedData): CategoryWithWishes[] => {
   const categoriesWithWishes = categories
     ?.map(category => {
       const prepared = wishes
