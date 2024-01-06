@@ -15,13 +15,11 @@ export const getCategories = ({
 
     return {
       ...category,
-      wishes: prepared?.map(wish => {
-        return {
-          ...wish,
-          currency: currencies?.find(currency => currency.id === wish.currencyId)?.name,
-          prices: prices?.filter(price => price.wishId === wish.id).map(price => price.value),
-        };
-      }),
+      wishes: prepared?.map(wish => ({
+        ...wish,
+        currency: currencies?.find(currency => currency.id === wish.currencyId)?.name,
+        prices: prices?.filter(price => price.wishId === wish.id).map(price => price.value),
+      })),
     };
   });
 
