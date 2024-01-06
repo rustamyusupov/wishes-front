@@ -84,7 +84,7 @@ export const Form: FC<Props> = ({
         <Field
           className={cn(css.field, css.archive)}
           defaultChecked={wish?.archive}
-          defaultValue={Number(wish?.archive)}
+          defaultValue={wish?.archive ? 1 : 0}
           id="archive"
           type="checkbox"
           name="archive"
