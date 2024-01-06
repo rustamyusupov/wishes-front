@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useParams, useRouteLoaderData } from 'react-router-dom';
 
 import { Data } from 'api';
-import { Form } from 'components/Form';
 
+import { Form } from './Form';
 import { getOptions, getWish } from './helpers';
 
 export const Wish: FC = (): ReactElement => {

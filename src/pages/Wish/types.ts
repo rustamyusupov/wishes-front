@@ -1,4 +1,5 @@
 import { Data, Wish } from 'api';
+import { Option } from 'components/Select';
 
 export interface Item {
   id: number;
@@ -12,4 +13,13 @@ export interface DataWithId extends Data {
 export interface WishWithPrice extends Wish {
   currency: string | undefined;
   price: number | undefined;
+}
+
+export interface Props {
+  categories: Option[];
+  currencies: Option[];
+  method: 'post' | 'put';
+  submit: 'string';
+  title: 'string';
+  wish?: WishWithPrice;
 }
