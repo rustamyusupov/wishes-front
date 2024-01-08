@@ -10,26 +10,9 @@ export const action = async ({ request, params }: ActionFunctionArgs): Promise<R
   switch (request.method) {
     case 'POST':
     case 'PUT': {
-      const url = `/api/wishes/${request.method === 'PUT' ? params.id : ''}`;
-
-      const response = await fetchJSON<Wish>(url, {
+      await fetchJSON<Wish>(`/api/wishes/${request.method === 'PUT' ? params.id : ''}`, {
         method: request.method,
-        body: JSON.stringify({
-          ...data,
-          archive: Boolean(data.archive),
-          categoryId: Number(data.categoryId),
-          currencyId: Number(data.currencyId),
-          sort: Number(data.sort) ?? 0,
-        }),
-      });
-
-      await fetchJSON('/api/prices', {
-        method: 'POST',
-        body: JSON.stringify({
-          wishId: response.id,
-          value: Number(data.price),
-          date: new Date().toLocaleDateString('ru-RU'),
-        }),
+        body: JSON.stringify(data),
       });
 
       break;
@@ -44,5 +27,5 @@ export const action = async ({ request, params }: ActionFunctionArgs): Promise<R
     }
   }
 
-  return redirect('/wishes');
+  return redirect(`/wishes/${params.user}`);
 };

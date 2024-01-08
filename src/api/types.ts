@@ -1,3 +1,8 @@
+export interface User {
+  id: number;
+  name: string;
+}
+
 export interface Category {
   id: number;
   name: string;
@@ -11,10 +16,12 @@ export interface Currency {
 export interface Wish {
   archive: boolean;
   categoryId: Category['id'];
+  currency: Currency['name'];
   currencyId: Currency['id'];
   id: number;
   link: string;
   name: string;
+  price: number;
   sort: number;
 }
 
@@ -25,9 +32,15 @@ export interface Price {
   date: string;
 }
 
+export interface CategoryWithWishes extends Category {
+  wishes: Wish[];
+}
+
+export type Wishlist = CategoryWithWishes[];
+
 export interface Data {
   categories: Category[];
   currencies: Currency[];
-  wishes: Wish[];
-  prices: Price[];
+  user: User;
+  wishlist: Wishlist;
 }
