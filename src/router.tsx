@@ -10,12 +10,17 @@ export const router = createBrowserRouter([
   {
     id: 'root',
     path: '/wishes',
-    loader: loader,
     Component: App,
     children: [
-      { index: true, Component: Home },
-      { path: ':id', action, Component: Wish },
-      { path: 'new', action, Component: Wish },
+      {
+        id: 'user',
+        path: ':user',
+        loader,
+        children: [
+          { index: true, Component: Home },
+          { path: ':id', action, Component: Wish },
+        ],
+      },
       { path: '*', Component: NoMatch },
     ],
   },
