@@ -1,30 +1,9 @@
-import { CategoryWithWishes, LoadedData } from './types';
+import { Wishlist } from 'api';
 
-export const getCategories = ({
-  categories,
-  wishes,
-  currencies,
-  prices,
-  isVisible,
-}: LoadedData): CategoryWithWishes[] => {
-  const categoriesWithWishes = categories
-    ?.map(category => {
-      const prepared = wishes
-        ?.filter(
-          wish => wish.categoryId === category.id && (wish.archive === isVisible || !wish.archive)
-        )
-        .sort((a, b) => a.sort - b.sort);
-
-      return {
-        ...category,
-        wishes: prepared?.map(wish => ({
-          ...wish,
-          currency: currencies?.find(currency => currency.id === wish.currencyId)?.name,
-          prices: prices?.filter(price => price.wishId === wish.id).map(price => price.value),
-        })),
-      };
-    })
-    ?.filter(category => category.wishes.length > 0);
-
-  return categoriesWithWishes;
-};
+export const getCategories = (wishlist: Wishlist, isVisible: boolean): Wishlist =>
+  wishlist.map(category => ({
+    ...category,
+    wishes: category.wishes
+      .filter(wish => wish.archive === isVisible || !wish.archive)
+      .sort((a, b) => a.sort - b.sort),
+  }));

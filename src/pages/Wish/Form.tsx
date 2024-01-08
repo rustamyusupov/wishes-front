@@ -17,6 +17,7 @@ export const Form: FC<Props> = ({
   method,
   submit,
   title,
+  user,
   wish,
 }): ReactElement => {
   const { t } = useTranslation('form');
@@ -100,7 +101,7 @@ export const Form: FC<Props> = ({
             {t('delete')}
           </Button>
         ) : null}
-        <Button className={css.submit} type="submit">
+        <Button className={css.submit} name="user" type="submit" value={user}>
           {submit}
         </Button>
       </div>

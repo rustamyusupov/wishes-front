@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router-dom';
 
@@ -13,11 +13,11 @@ import { getCategories } from './helpers';
 import css from './home.module.css';
 
 export const Home: FC = (): ReactElement => {
-  const data = useRouteLoaderData('root') as Data;
+  const { wishlist } = useRouteLoaderData('user') as Data;
   const [isVisible, setIsVisible] = useState(false);
   const { t } = useTranslation(['home']);
 
-  const categories = useCallback(() => getCategories({ ...data, isVisible }), [data, isVisible])();
+  const categories = getCategories(wishlist, isVisible);
 
   const handleChange = () => setIsVisible(!isVisible);
 
@@ -25,7 +25,7 @@ export const Home: FC = (): ReactElement => {
     <div className={css.home}>
       <div className={css.header}>
         <h1 className={css.title}>{t('title')}</h1>
-        <Link className={css.link} to="/wishes/new" title={t('plus')}>
+        <Link className={css.link} to="new" title={t('plus')}>
           <Plus className={css.plus} width={24} height={24} />
         </Link>
         <input
@@ -43,7 +43,7 @@ export const Home: FC = (): ReactElement => {
           )}
         </label>
       </div>
-      {categories.map(category => (
+      {categories?.map(category => (
         <section className={css.category} key={category.id}>
           <h2 className={css.heading}>{category.name}</h2>
           <ul className={css.list}>

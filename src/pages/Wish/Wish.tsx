@@ -8,14 +8,14 @@ import { Form } from './Form';
 import { getOptions, getWish } from './helpers';
 
 export const Wish: FC = (): ReactElement => {
-  const data = useRouteLoaderData('root') as Data;
+  const data = useRouteLoaderData('user') as Data;
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation('wish');
 
-  const isEdit = Boolean(id);
+  const isEdit = id !== 'new';
   const categories = getOptions(data.categories);
   const currencies = getOptions(data.currencies);
-  const wish = getWish({ id: Number(id), ...data });
+  const wish = getWish(Number(id), data.wishlist);
 
   return (
     <Form
@@ -25,6 +25,7 @@ export const Wish: FC = (): ReactElement => {
       method={isEdit ? 'put' : 'post'}
       submit={t(isEdit ? 'update' : 'add')}
       title={t(isEdit ? 'edit' : 'new')}
+      user={data.user.id}
       wish={wish}
     />
   );

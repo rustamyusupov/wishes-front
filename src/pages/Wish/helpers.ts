@@ -1,6 +1,7 @@
+import { Wish, Wishlist } from 'api';
 import { Option } from 'components/Select';
 
-import { DataWithId, Item, WishWithPrice } from './types';
+import { Item } from './types';
 
 export const getOptions = (list: Item[]): Option[] =>
   list.map(option => ({
@@ -8,21 +9,8 @@ export const getOptions = (list: Item[]): Option[] =>
     value: option.id,
   }));
 
-export const getWish = ({
-  currencies,
-  id,
-  prices,
-  wishes,
-}: DataWithId): WishWithPrice | undefined => {
-  const wish = wishes.find(wish => wish.id === id);
-
-  if (!wish) {
-    return undefined;
-  }
-
-  return {
-    ...wish,
-    currency: currencies?.find(currency => currency.id === wish?.currencyId)?.name,
-    price: prices?.filter(price => price.wishId === wish?.id).at(-1)?.value,
-  };
-};
+export const getWish = (id: number, wishlist: Wishlist): Wish | undefined =>
+  wishlist
+    .map(category => category.wishes)
+    .flat()
+    .find(wish => wish.id === id);

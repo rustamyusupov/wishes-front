@@ -3,25 +3,18 @@ import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as Route } from 'react-router-dom';
 
+import { Wish as IWish } from 'api';
 import { Link } from 'components/Link';
 import Edit from 'icons/edit.svg?react';
 
-import { WishWithPrice } from './types';
 import css from './wish.module.css';
 
-export const Wish: FC<WishWithPrice> = ({
-  archive,
-  id,
-  link,
-  name,
-  prices,
-  currency,
-}): ReactElement => {
+export const Wish: FC<IWish> = ({ archive, id, link, name, price, currency }): ReactElement => {
   const { t } = useTranslation(['common']);
 
   return (
     <li className={cn(css.wish, { [css.archive]: archive })}>
-      <Route className={css.link} to={`/wishes/${id}`}>
+      <Route className={css.link} to={String(id)}>
         <Edit className={css.edit} width={26} height={26} />
       </Route>
       <Link className={css.name} to={link}>
@@ -29,7 +22,7 @@ export const Wish: FC<WishWithPrice> = ({
       </Link>
       &nbsp;&mdash;&nbsp;
       {/* <Link className={css.price} to={``}> */}
-      {`${t('currency', { currency, val: prices.at(-1) ?? 0, locale: 'ru-RU' })}`}
+      {`${t('currency', { currency, val: price ?? 0, locale: 'ru-RU' })}`}
       {/* </Link> */}
     </li>
   );
