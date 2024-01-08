@@ -13,6 +13,6 @@ export interface Props {
   method: 'post' | 'put';
   submit: 'string';
   title: 'string';
-  user: number;
+  user: string;
   wish?: Wish;
 }

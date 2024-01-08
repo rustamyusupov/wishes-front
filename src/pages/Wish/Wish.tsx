@@ -9,7 +9,7 @@ import { getOptions, getWish } from './helpers';
 
 export const Wish: FC = (): ReactElement => {
   const data = useRouteLoaderData('user') as Data;
-  const { id } = useParams<{ id: string }>();
+  const { id, user } = useParams<{ id: string; user: string }>();
   const { t } = useTranslation('wish');
 
   const isEdit = id !== 'new';
@@ -25,7 +25,7 @@ export const Wish: FC = (): ReactElement => {
       method={isEdit ? 'put' : 'post'}
       submit={t(isEdit ? 'update' : 'add')}
       title={t(isEdit ? 'edit' : 'new')}
-      user={data.user.id}
+      user={user ?? ''}
       wish={wish}
     />
   );

@@ -1,8 +1,3 @@
-export interface User {
-  id: number;
-  name: string;
-}
-
 export interface Category {
   id: number;
   name: string;
@@ -41,6 +36,5 @@ export type Wishlist = CategoryWithWishes[];
 export interface Data {
   categories: Category[];
   currencies: Currency[];
-  user: User;
   wishlist: Wishlist;
 }

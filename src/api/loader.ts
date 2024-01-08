@@ -1,12 +1,9 @@
-import { LoaderFunction, LoaderFunctionArgs } from 'react-router-dom';
+import { LoaderFunction } from 'react-router-dom';
 
 import { fetchJSON } from './request';
-import { Category, Currency, Data, User, Wishlist } from './types';
+import { Category, Currency, Data, Wishlist } from './types';
 
-export const loader: LoaderFunction = async ({ params }: LoaderFunctionArgs): Promise<Data> => {
-  const users = await fetchJSON<User[]>(`/api/users?name=${params.user}`);
-  const user = users?.[0];
-
+export const loader: LoaderFunction = async (): Promise<Data> => {
   // TODO: request categories and currencies for wish page only
   const [categories, currencies, wishlist] = await Promise.all([
     await fetchJSON<Category[]>('/api/categories'),
@@ -14,5 +11,5 @@ export const loader: LoaderFunction = async ({ params }: LoaderFunctionArgs): Pr
     await fetchJSON<Wishlist>(`/api/wishlist`),
   ]);
 
-  return { categories, currencies, user, wishlist };
+  return { categories, currencies, wishlist };
 };
