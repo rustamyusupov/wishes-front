@@ -15,7 +15,7 @@ import css from './home.module.css';
 export const Home: FC = (): ReactElement => {
   const { wishlist } = useRouteLoaderData('user') as Data;
   const [isVisible, setIsVisible] = useState(false);
-  const { t } = useTranslation(['home']);
+  const { t } = useTranslation('home');
 
   const categories = getCategories(wishlist, isVisible);
 
