@@ -3,7 +3,7 @@ import { ActionFunctionArgs, redirect } from 'react-router-dom';
 import { fetchJSON } from './request';
 import { Wish } from './types';
 
-export const action = async ({ request, params }: ActionFunctionArgs): Promise<Response> => {
+export const wishAction = async ({ request, params }: ActionFunctionArgs): Promise<Response> => {
   const form = await request.formData();
   const data = Object.fromEntries(form.entries());
 
