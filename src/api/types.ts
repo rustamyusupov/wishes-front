@@ -38,3 +38,12 @@ export interface Data {
   currencies: Currency[];
   wishlist: Wishlist;
 }
+
+export interface User {
+  accessToken: string;
+  user: {
+    id: number;
+    login: string;
+    email: string;
+  };
+}

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { loader, wishAction } from 'api';
+import { loader, loginAction, wishAction } from 'api';
 import { App } from 'components/App';
 import { Home } from 'pages/Home';
 import { Login } from 'pages/Login';
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     path: '/wishes',
     Component: App,
     children: [
-      { index: true, Component: Login },
+      { index: true, action: loginAction, Component: Login },
       {
         id: 'user',
         path: ':user',
