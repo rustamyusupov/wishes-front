@@ -15,7 +15,7 @@ export const Wish: FC = (): ReactElement => {
   const isEdit = id !== 'new';
   const categories = getOptions(data.categories);
   const currencies = getOptions(data.currencies);
-  const wish = getWish(Number(id), data.wishlist);
+  const wish = getWish(id, data.wishlist);
 
   return (
     <Form

@@ -12,7 +12,7 @@ export const wishAction = async ({ request, params }: ActionFunctionArgs): Promi
     case 'PUT': {
       await fetchJSON<Wish>(`/api/wishes/${request.method === 'PUT' ? params.id : ''}`, {
         method: request.method,
-        body: JSON.stringify({ ...data, userId: localStorage.getItem('user') ?? null }),
+        body: JSON.stringify(data),
       });
 
       break;
@@ -34,13 +34,10 @@ export const loginAction = async ({ request }: ActionFunctionArgs): Promise<Resp
   const form = await request.formData();
   const data = Object.fromEntries(form.entries());
 
-  const response = await fetchJSON<User>('/api/signin', {
+  const response = await fetchJSON<User>('/api/auth/login', {
     method: 'POST',
     body: JSON.stringify(data),
   });
 
-  localStorage.setItem('token', response.accessToken);
-  localStorage.setItem('user', String(response.user.id));
-
-  return redirect(`/wishes/${response.user.login}`);
+  return redirect(`/wishes/${response.user}`);
 };

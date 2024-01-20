@@ -9,8 +9,8 @@ export const getOptions = (list: Item[]): Option[] =>
     value: option.id,
   }));
 
-export const getWish = (id: number, wishlist: Wishlist): Wish | undefined =>
+export const getWish = (id: string | undefined, wishlist: Wishlist): Wish | undefined =>
   wishlist
     .map(category => category.wishes)
     .flat()
-    .find(wish => wish.id === id);
+    .find(wish => wish.id === Number(id));

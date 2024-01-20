@@ -8,7 +8,7 @@ export const loader: LoaderFunction = async ({ params }: LoaderFunctionArgs): Pr
   const [categories, currencies, wishlist] = await Promise.all([
     await fetchJSON<Category[]>('/api/categories'),
     await fetchJSON<Currency[]>('/api/currencies'),
-    await fetchJSON<Wishlist>(`/api/wishlist?user=${params.user}`),
+    await fetchJSON<Wishlist>(`/api/wishes?user=${params.user}`),
   ]);
 
   return { categories, currencies, wishlist };
