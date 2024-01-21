@@ -2,6 +2,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 
 import { loginAction, userLoader, wishAction } from 'api';
 import { App } from 'components/App';
+import { Protected } from 'components/Protected';
 import { Home } from 'pages/Home';
 import { Login } from 'pages/Login';
 import { NoMatch } from 'pages/NoMatch';
@@ -21,7 +22,11 @@ export const router = createBrowserRouter([
         loader: userLoader,
         children: [
           { index: true, Component: Home },
-          { path: ':id', action: wishAction, Component: Wish },
+          {
+            path: ':id',
+            Component: Protected,
+            children: [{ index: true, action: wishAction, Component: Wish }],
+          },
         ],
       },
       { path: '*', Component: NoMatch },
