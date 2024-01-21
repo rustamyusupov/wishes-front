@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link as Route } from 'react-router-dom';
 
 import { Wish as IWish } from 'api';
+import { auth } from 'api/auth';
 import { Link } from 'components/Link';
 import Edit from 'icons/edit.svg?react';
 
@@ -13,10 +14,12 @@ export const Wish: FC<IWish> = ({ archive, id, link, name, price, currency }): R
   const { t } = useTranslation(['common']);
 
   return (
-    <li className={cn(css.wish, { [css.archive]: archive })}>
-      <Route className={css.link} to={String(id)}>
-        <Edit className={css.edit} width={26} height={26} />
-      </Route>
+    <li className={cn(css.wish, { [css.edit]: auth.isAuthenticated, [css.archive]: archive })}>
+      {auth.isAuthenticated ? (
+        <Route className={css.link} to={String(id)}>
+          <Edit className={css.edit} width={26} height={26} />
+        </Route>
+      ) : null}
       <Link className={css.name} to={link}>
         {name}
       </Link>

@@ -1,16 +1,21 @@
 .wish {
   position: relative;
   max-width: 70ch;
+  padding-left: 15px;
 
   &:not(:last-child) {
     margin-bottom: 10px;
+  }
+
+  &.edit {
+    padding-left: 40px;
   }
 }
 
 .link {
   position: absolute;
   top: 14px;
-  left: -36px;
+  left: 5px;
   color: unset;
   cursor: pointer;
   transform: translateY(-50%);
