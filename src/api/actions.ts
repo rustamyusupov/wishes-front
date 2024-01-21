@@ -1,7 +1,8 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
 
+import { auth } from './auth';
 import { fetchJSON } from './request';
-import { User, Wish } from './types';
+import { Wish } from './types';
 
 export const wishAction = async ({ request, params }: ActionFunctionArgs): Promise<Response> => {
   const form = await request.formData();
@@ -30,14 +31,17 @@ export const wishAction = async ({ request, params }: ActionFunctionArgs): Promi
   return redirect(`/wishes/${params.user}`);
 };
 
-export const loginAction = async ({ request }: ActionFunctionArgs): Promise<Response> => {
+export const loginAction = async ({ request }: ActionFunctionArgs): Promise<Response | unknown> => {
   const form = await request.formData();
   const data = Object.fromEntries(form.entries());
 
-  const response = await fetchJSON<User>('/api/auth/login', {
-    method: 'POST',
-    body: JSON.stringify(data),
-  });
+  try {
+    await auth.login(data);
+  } catch (error) {
+    return error;
+  }
 
-  return redirect(`/wishes/${response.user}`);
+  console.log(auth);
+
+  return redirect(`/wishes/${auth.user}`);
 };

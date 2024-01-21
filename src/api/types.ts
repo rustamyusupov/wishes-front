@@ -1,3 +1,14 @@
+interface LoginData {
+  [k: string]: FormDataEntryValue;
+}
+
+export interface Auth {
+  isAuthenticated: boolean;
+  user: null | string;
+  login(data: LoginData): Promise<void>;
+  logout(): Promise<void>;
+}
+
 export interface Category {
   id: number;
   name: string;
@@ -40,10 +51,5 @@ export interface Data {
 }
 
 export interface User {
-  accessToken: string;
-  user: {
-    id: number;
-    login: string;
-    email: string;
-  };
+  user: string;
 }
