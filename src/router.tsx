@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 
 import { loginAction, userLoader, wishAction } from 'api';
 import { App } from 'components/App';
-import { Protected } from 'components/Protected';
+// import { Protected } from 'components/Protected';
 import { Home } from 'pages/Home';
 import { Login } from 'pages/Login';
 import { NoMatch } from 'pages/NoMatch';
@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
           { index: true, Component: Home },
           {
             path: ':id',
-            Component: Protected,
+            // Component: Protected,
             children: [{ index: true, action: wishAction, Component: Wish }],
           },
         ],
