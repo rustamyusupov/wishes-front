@@ -17,4 +17,9 @@ export const auth: Auth = {
     auth.isAuthenticated = false;
     auth.user = '';
   },
+  verify: async () => {
+    const { isAuthenticated } = await fetchJSON<User>('/api/auth/verify');
+
+    auth.isAuthenticated = isAuthenticated;
+  },
 };

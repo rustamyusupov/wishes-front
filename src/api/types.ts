@@ -7,6 +7,7 @@ export interface Auth {
   user: null | string;
   login(data: LoginData): Promise<void>;
   logout(): Promise<void>;
+  verify(): Promise<void>;
 }
 
 export interface Category {
@@ -51,5 +52,6 @@ export interface Data {
 }
 
 export interface User {
+  isAuthenticated: boolean;
   user: string;
 }

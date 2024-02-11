@@ -1,7 +1,18 @@
 import { LoaderFunction, LoaderFunctionArgs } from 'react-router-dom';
 
+import { auth } from './auth';
 import { fetchJSON } from './request';
 import { Category, Currency, Data, Wishlist } from './types';
+
+export const appLoader: LoaderFunction = async (): Promise<null> => {
+  try {
+    await auth.verify();
+  } catch (error) {
+    console.log(error);
+  }
+
+  return null;
+};
 
 export const userLoader: LoaderFunction = async ({ params }: LoaderFunctionArgs): Promise<Data> => {
   // TODO: request categories and currencies for wish page only
