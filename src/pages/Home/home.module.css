@@ -22,6 +22,7 @@
 .link,
 .visibility {
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .plus,
@@ -35,6 +36,12 @@
 
 .checkbox {
   display: none;
+}
+
+.logout {
+  cursor: pointer;
+  background-color: unset;
+  border: none;
 }
 
 .category {

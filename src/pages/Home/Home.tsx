@@ -5,6 +5,7 @@ import { useRouteLoaderData } from 'react-router-dom';
 import { Data } from 'api';
 import { auth } from 'api/auth';
 import { Link } from 'components/Link';
+// import Logout from 'icons/logout.svg?react';
 import Plus from 'icons/plus.svg?react';
 import VisibilityOff from 'icons/visibility-off.svg?react';
 import Visibility from 'icons/visibility.svg?react';
@@ -45,6 +46,9 @@ export const Home: FC = (): ReactElement => {
                 <VisibilityOff className={css.icon} width={20} height={20} />
               )}
             </label>
+            {/* <button className={css.logout} onClick={auth.logout}>
+              <Logout className={css.icon} width={20} height={20} />
+            </button> */}
           </div>
         ) : null}
       </div>
