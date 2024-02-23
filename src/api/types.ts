@@ -7,7 +7,7 @@ export interface Auth {
   user: null | string;
   login(data: LoginData): Promise<void>;
   logout(): Promise<void>;
-  verify(): Promise<void>;
+  verify(user: User['user']): Promise<void>;
 }
 
 export interface Category {

@@ -14,11 +14,12 @@ export const auth: Auth = {
     auth.user = response.user;
   },
   logout: async () => {
+    await fetchJSON<User>('/api/auth/logout');
     auth.isAuthenticated = false;
     auth.user = '';
   },
-  verify: async () => {
-    const { isAuthenticated } = await fetchJSON<User>('/api/auth/verify');
+  verify: async user => {
+    const { isAuthenticated } = await fetchJSON<User>(`/api/auth/verify?user=${user}`);
 
     auth.isAuthenticated = isAuthenticated;
   },

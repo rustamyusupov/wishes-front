@@ -4,9 +4,9 @@ import { auth } from './auth';
 import { fetchJSON } from './request';
 import { Category, Currency, Data, Wishlist } from './types';
 
-export const appLoader: LoaderFunction = async (): Promise<null> => {
+export const appLoader: LoaderFunction = async ({ params }: LoaderFunctionArgs): Promise<null> => {
   try {
-    await auth.verify();
+    await auth.verify(params?.user ?? '');
   } catch (error) {
     console.log(error);
   }
