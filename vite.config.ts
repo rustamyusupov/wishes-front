@@ -4,7 +4,6 @@ import svgr from 'vite-plugin-svgr';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  base: '/wishes',
   plugins: [react(), svgr(), viteTsconfigPaths()],
   server: {
     host: 'localhost',

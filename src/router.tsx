@@ -11,7 +11,6 @@ import { Wish } from 'pages/Wish';
 export const router = createBrowserRouter([
   {
     id: 'root',
-    path: '/wishes',
     loader: appLoader,
     Component: App,
     children: [

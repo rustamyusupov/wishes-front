@@ -7,7 +7,7 @@ void i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: '/wishes/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     fallbackLng: 'en',
     interpolation: {

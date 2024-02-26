@@ -28,7 +28,7 @@ export const wishAction = async ({ request, params }: ActionFunctionArgs): Promi
     }
   }
 
-  return redirect(`/wishes/${params.user}`);
+  return redirect(`/${params.user}`);
 };
 
 export const loginAction = async ({ request }: ActionFunctionArgs): Promise<Response | unknown> => {
@@ -41,7 +41,5 @@ export const loginAction = async ({ request }: ActionFunctionArgs): Promise<Resp
     return error;
   }
 
-  console.log(auth);
-
-  return redirect(`/wishes/${auth.user}`);
+  return redirect(`/${auth.user}`);
 };

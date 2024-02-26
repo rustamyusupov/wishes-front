@@ -8,5 +8,5 @@ export const Protected: FC = () => {
     return <Outlet />;
   }
 
-  return <Navigate to="/wishes" replace />;
+  return <Navigate to="/" replace />;
 };
