@@ -2,7 +2,7 @@ import { FC, ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router-dom';
 
-import { Data } from 'api';
+import { Wishlist } from 'api';
 import { auth } from 'api/auth';
 import { Link } from 'components/Link';
 // import Logout from 'icons/logout.svg?react';
@@ -15,7 +15,7 @@ import { getCategories } from './helpers';
 import css from './home.module.css';
 
 export const Home: FC = (): ReactElement => {
-  const { wishlist } = useRouteLoaderData('user') as Data;
+  const wishlist = useRouteLoaderData('user') as Wishlist;
   const [isVisible, setIsVisible] = useState(false);
   const { t } = useTranslation('home');
 

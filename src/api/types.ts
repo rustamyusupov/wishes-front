@@ -45,10 +45,9 @@ export interface CategoryWithWishes extends Category {
 
 export type Wishlist = CategoryWithWishes[];
 
-export interface Data {
+export interface WishData {
   categories: Category[];
   currencies: Currency[];
-  wishlist: Wishlist;
 }
 
 export interface User {
